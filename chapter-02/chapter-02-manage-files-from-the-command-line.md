@@ -18,10 +18,6 @@
 | /usr/sbin  | System administration commands                                                                                                                                                                                                                                                                                            |
 | /usr/local | Locally customized software                                                                                                                                                                                                                                                                                               |
 | /var       | System-specific variable data should persist between boots. Files that dynamically change, such as databases, cache directories, log files, printer-spooled documents, and website content, might be found under /var                                                                                                     |
-```yaml
-tree -L 1
-mkdir -pv www.{ansible,openshift,redhat}.com/{html,cgi-bin}/
-```
 
 
 ## Make Links Between Files
@@ -49,3 +45,17 @@ ln -s /etc /home/user/configfiles
 
 
 ## Match File Names with Shell Expansions
+```yaml
+tree -L 1
+mkdir -pv www.{ansible,openshift,redhat}.com/{html,cgi-bin}/
+touch {index,info,insights}.html
+mkdir -pv RHEL{6..9}
+
+date +%F
+
+myhost=$(hostname -s); echo $myhost
+echo "***** hostname is ${myhost} *****"
+
+echo "Will variable $myhost evaluate to $(hostname -s)?"
+echo 'Will variable $myhost evaluate to $(hostname -s)?'
+```
